@@ -1,5 +1,6 @@
-const admin = require('firebase-admin/app');
-admin.initializeApp();
-const reflectUpdates = require('./reflect_updates.js');
+import {initializeApp} from 'firebase-admin/app';
+import reflectUpdates from './handlers/reflect_updates';
 
-exports.reflectUpdates = reflectUpdates.reflectUpdates;
+initializeApp();
+
+exports.reflectUpdates = reflectUpdates;
