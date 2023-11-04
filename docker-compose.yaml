@@ -10,4 +10,4 @@ services:
       - '9005:9005'
     volumes:
       - '.:/app'
-      - '$HOME/.ssh:/root/.ssh'
+      - '$HOME/.ssh/:/root/.ssh/'
