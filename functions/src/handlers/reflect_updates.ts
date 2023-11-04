@@ -1,14 +1,13 @@
-import {Change, EventContext, firestore} from 'firebase-functions';
+import {Change, firestore} from 'firebase-functions';
 import {database} from 'firebase-admin';
 
 /**
- * Function that is triggered by updates written in the Firestore database 
+ * Function that is triggered by updates written in the Firestore database
  * and wrote the change into the Realtime database.
  */
 export default firestore.document('feature_flags/{flagId}')
   .onWrite((
-    change: Change<firestore.DocumentSnapshot>,
-    context: EventContext<{ flagId: string }>
+    change: Change<firestore.DocumentSnapshot>
   ) => {
     const changeData = change.after.data();
 
