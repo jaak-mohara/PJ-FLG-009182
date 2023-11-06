@@ -1,5 +1,5 @@
 import {initializeApp} from 'firebase-admin/app';
-import reflectUpdates from './handlers/reflect_updates';
+import reflectUpdates from './handlers/reflectUpdates';
 
 initializeApp();
 

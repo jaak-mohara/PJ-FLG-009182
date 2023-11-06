@@ -21,15 +21,28 @@ export const split = (input: string): string[] => {
 
   // Split on numbers.
   const splitByNumbers = splitByUppercaseAndCharacters
-    .map((word) => {
-      // Divide the string between words and numbers.
-      return word.split(/(\d+)/);
-    })
+    .map((word) => word.split(/(\d+)/))
     .flat();
 
   // Remove empty strings.
   const emptyStringsFilteredOut = splitByNumbers
-    .filter((word) => word !== '') || [];
+    .filter((word) => word && word !== '') || [];
 
   return emptyStringsFilteredOut;
+};
+
+/**
+ * Uses the different helper functions to process the input.
+ *
+ * @param {string} input
+ * @return {string}
+ */
+export const processName = (input: string): string => {
+  const splitInput = split(input);
+
+  const capitalisedInput = splitInput.map((word) => capitalise(word));
+
+  const joinedInput = capitalisedInput.join('_');
+
+  return joinedInput;
 };

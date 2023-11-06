@@ -1,6 +1,6 @@
-import { capitalise, split } from '../src/helpers/stringHelper';
+import { capitalise, split, processName } from '../../src/helpers/stringHelper';
 
-describe('name utilities', () => {
+describe('helpers/stringHelper', () => {
   test('the capitalise should return successfully with a string type', () => {
     const result = capitalise('word');
 
@@ -48,4 +48,22 @@ describe('name utilities', () => {
     expect(result).toHaveLength(2);
     expect(result).toEqual(['word', 'one']);
   });
-})
+
+  test('process name should return a string value',() => {
+    const result = processName('word');
+
+    expect(typeof result).toBe('string');
+  });
+
+  test('process name response should be in all caps.',() => {
+    const result = processName('word');
+
+    expect(result).toEqual('WORD');
+  });
+
+  test('process name should divide the string and join it with underscores.',() => {
+    const result = processName('wordOne');
+
+    expect(result).toEqual('WORD_ONE');
+  });
+});
