@@ -15,3 +15,29 @@ export const checkIfFlagNameExists = async (
 
   return !snapshot.empty;
 };
+
+/**
+ * Create a new feature flag entry in the database.
+ *
+ * @param {string} flagName
+ * @param {boolean} isEnabled
+ * @param {?string} description
+ * @return {Promise<void>}
+ */
+export const createFeatureEntry = async ({
+  name,
+  isEnabled,
+  description,
+}: FeatureEntry): Promise<
+  firestore.DocumentReference<firestore.DocumentData>
+> => {
+  const collectionRef = firestore().collection('feature_flags');
+
+  const response = await collectionRef.add({
+    name,
+    description: description || '',
+    isEnabled,
+  });
+
+  return response;
+};
