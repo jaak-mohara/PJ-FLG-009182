@@ -10,15 +10,15 @@ export default https.onRequest(async (
   response
 ): Promise<void> => {
   if (request.method !== 'POST') {
-    response.status(405).send('Method Not Allowed');
+    response.status(405).send({message: 'Method Not Allowed.'});
     return;
   }
 
   const {
-    name = null,
-    isEnabled = null,
-    description = null,
-  } = request.body;
+    name,
+    isEnabled = false,
+    description = 'No description provided.',
+  }: FeatureEntry = request.body;
 
   if (!name == null) {
     response
@@ -46,7 +46,7 @@ export default https.onRequest(async (
   }
 
   // Create the flag.
-  const creationResponse = await createFeatureEntry({
+  const {id = null} = await createFeatureEntry({
     name: processedName,
     isEnabled,
     description,
@@ -56,6 +56,6 @@ export default https.onRequest(async (
     .status(200)
     .send({
       message: 'Feature flag created.',
-      ...creationResponse.get(),
+      id,
     });
 });

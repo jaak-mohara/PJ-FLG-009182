@@ -5,5 +5,7 @@ import createFeatureEntry from './handlers/createFeatureEntry';
 
 initializeApp();
 
-exports.reflectUpdates = reflectUpdates;
-exports.createFeatureEntry = createFeatureEntry;
+export {
+  reflectUpdates,
+  createFeatureEntry,
+};

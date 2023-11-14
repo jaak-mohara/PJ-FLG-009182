@@ -41,3 +41,8 @@ export const createFeatureEntry = async ({
 
   return response;
 };
+
+export default {
+  checkIfFlagNameExists,
+  createFeatureEntry,
+};
