@@ -17,7 +17,7 @@ jest.mock('../../src/repositories/featureFlagsRepository', () => ({
   createFeatureEntry: mockCreateFeatureEntry,
 }));
 
-describe('myFunction', () => {
+describe('createFeatureEntry', () => {
   let req: Request;
   let res: Response;
 
@@ -57,6 +57,27 @@ describe('myFunction', () => {
     await createFeatureEntry(req, res);
     expect(res.statusCode).toBe(405);
     expect(mockSend).toHaveBeenCalledWith({message: "Method Not Allowed."});
+  });
+
+  it('should respond with 422 if name is not provided', async () => {
+    delete req.body.name;
+    await createFeatureEntry(req, res);
+    expect(res.statusCode).toBe(422);
+    expect(mockSend).toHaveBeenCalledWith({message: "Name is required."});
+  });
+
+  it('should respond with 422 if isEnabled is not provided', async () => {
+    delete req.body.isEnabled;
+    await createFeatureEntry(req, res);
+    expect(res.statusCode).toBe(422);
+    expect(mockSend).toHaveBeenCalledWith({message: "isEnabled is required."});
+  });
+
+  it('should respond with 409 if the name already exists', async () => {
+    mockCheckIfFlagExists.mockResolvedValue(true);
+    await createFeatureEntry(req, res);
+    expect(res.statusCode).toBe(409);
+    expect(mockSend).toHaveBeenCalledWith({message: "Name already exists."});
   });
 });
 

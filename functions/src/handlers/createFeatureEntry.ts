@@ -16,11 +16,11 @@ export default https.onRequest(async (
 
   const {
     name,
-    isEnabled = false,
+    isEnabled,
     description = 'No description provided.',
   }: FeatureEntry = request.body;
 
-  if (!name == null) {
+  if (!name) {
     response
       .status(422)
       .send({message: 'Name is required.'});
@@ -30,7 +30,7 @@ export default https.onRequest(async (
   // Parse to all caps format with underscores.
   const processedName = processName(name);
 
-  if (!isEnabled == null) {
+  if (!isEnabled) {
     response
       .status(422)
       .send({message: 'isEnabled is required.'});
