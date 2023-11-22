@@ -4,7 +4,7 @@
  * @param {string} input
  * @return {string}
  */
-export const capitalise = (input: string): string => {
+exports.capitalise = (input) => {
   return input.toUpperCase();
 };
 
@@ -14,7 +14,7 @@ export const capitalise = (input: string): string => {
  * @param {string} input
  * @return {string[]}
  */
-export const split = (input: string): string[] => {
+exports.split = (input) => {
   // Split on capital letters, spaces, underscores, and hyphens.
   const splitByUppercaseAndCharacters = input
     .split(/(?=[A-Z])|[\s_-]/);
@@ -27,7 +27,6 @@ export const split = (input: string): string[] => {
   // Remove empty strings.
   const emptyStringsFilteredOut = splitByNumbers
     .filter((word) => word && word !== '') || [];
-
   return emptyStringsFilteredOut;
 };
 
@@ -37,12 +36,9 @@ export const split = (input: string): string[] => {
  * @param {string} input
  * @return {string}
  */
-export const processName = (input: string): string => {
-  const splitInput = split(input);
-
-  const capitalisedInput = splitInput.map((word) => capitalise(word));
-
+exports.processName = (input) => {
+  const splitInput = exports.split(input);
+  const capitalisedInput = splitInput.map((word) => exports.capitalise(word));
   const joinedInput = capitalisedInput.join('_');
-
   return joinedInput;
 };

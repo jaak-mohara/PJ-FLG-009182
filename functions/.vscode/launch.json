@@ -4,28 +4,18 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-    // Run npm script
+    // Launch configuration for running the test npm script.
     {
       "type": "node",
       "request": "launch",
-      "name": "Serve Emulator",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "serve"],
-      "console": "integratedTerminal"
-    }, 
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Jest Watch",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "program": "${workspaceFolder}/node_modules/jest/bin/jest.js",
+      "name": "Run Tests",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
       "args": [
-        "--watchAll"
+        "--runInBand",
+        "--detectOpenHandles",
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
-    }
+    },
   ]
 }

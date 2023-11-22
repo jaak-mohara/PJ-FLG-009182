@@ -1,4 +1,4 @@
-import {firestore} from 'firebase-admin';
+const admin = require('firebase-admin');
 
 /**
  * Check if the flag name already exists in the database.
@@ -6,13 +6,9 @@ import {firestore} from 'firebase-admin';
  * @param {string} flagName
  * @return {Promise<boolean>}
  */
-export const checkIfFlagNameExists = async (
-  flagName: string
-): Promise<boolean> => {
-  const collectionRef = firestore().collection('feature_flags');
-
+exports.checkIfFlagNameExists = async (flagName) => {
+  const collectionRef = (0, admin.firestore)().collection('feature_flags');
   const snapshot = await collectionRef.where('name', '==', flagName).get();
-
   return !snapshot.empty;
 };
 
@@ -24,25 +20,12 @@ export const checkIfFlagNameExists = async (
  * @param {?string} description
  * @return {Promise<void>}
  */
-export const createFeatureEntry = async ({
-  name,
-  isEnabled,
-  description,
-}: FeatureEntry): Promise<
-  firestore.DocumentReference<firestore.DocumentData>
-> => {
-  const collectionRef = firestore().collection('feature_flags');
-
+exports.createFeatureEntry = async ({ name, isEnabled, description }) => {
+  const collectionRef = (0, admin.firestore)().collection('feature_flags');
   const response = await collectionRef.add({
     name,
     description: description || '',
     isEnabled,
   });
-
   return response;
-};
-
-export default {
-  checkIfFlagNameExists,
-  createFeatureEntry,
 };
