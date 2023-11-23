@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/username/Downloads/service-account-file.json"
+
 alias run="docker compose exec -it app";
 alias up="docker compose up app -d";
 alias build="docker compose build app";

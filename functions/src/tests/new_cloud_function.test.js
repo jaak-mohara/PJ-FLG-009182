@@ -1,4 +1,4 @@
-const {generateToken} = require('../../new_cloud_function');
+const { generateToken } = require('../../create_token');
 
 describe('new_cloud_function', () => {
   beforeEach(() => {
