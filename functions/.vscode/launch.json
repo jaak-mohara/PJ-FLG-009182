@@ -17,5 +17,19 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
+    // Launch confirguration for running the serve npm script.
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run Serve",
+      "program": "/usr/local/bin/firebase",
+      "args": [
+        "emulators:start",
+        "--only",
+        "functions",
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
   ]
 }

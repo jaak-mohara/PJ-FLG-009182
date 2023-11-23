@@ -22,7 +22,16 @@
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [9005]
+	"forwardPorts": [
+		9005
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.copilot-chat"
+			]
+		}
+	}
 
 	// Uncomment the next line if you want start specific services in your Docker Compose config.
 	// "runServices": [],
