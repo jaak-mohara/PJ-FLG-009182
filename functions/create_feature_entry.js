@@ -43,8 +43,10 @@ exports.createFeatureEntry = https.onRequest(async (request, response) => {
     return;
   }
 
+  const test = response.status(200);
+
   // Create the flag.
-  const { id = null } = await repository.createFeatureEntry({
+  const result = await repository.createFeatureEntry({
     name: processedName,
     isEnabled,
     description,
@@ -54,6 +56,6 @@ exports.createFeatureEntry = https.onRequest(async (request, response) => {
     .status(200)
     .send({
       message: 'Feature flag created.',
-      id,
+      id: result.id,
     });
 });
