@@ -1,12 +1,11 @@
-const { firestore: { document } } = require('firebase-functions');
+const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 // To avoid deployment errors, do not call admin.initializeApp() in your code
 
-exports.reflectUpdates = document('feature_flags/{flagId}')
+exports.reflectUpdates = functions.firestore.document('feature_flags/{flagId}')
   // @ts-ignore
   .onWrite((change, context) => {
     // Write your code below!
-    // @ts-ignore
     const { name, toggled, uuid } = change.after.data();
 
     return admin

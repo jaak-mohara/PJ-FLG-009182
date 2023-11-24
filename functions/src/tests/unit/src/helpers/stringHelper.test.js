@@ -36,4 +36,10 @@ describe('stringHelper', () => {
     expect(typeof result).toBe('object');
     expect(result.length).toBe(2)
   });
+
+  it('should split numbers', () => {
+    const result = split('test12');
+    expect(typeof result).toBe('object');
+    expect(result.length).toBe(2)
+  });
 });

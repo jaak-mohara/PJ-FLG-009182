@@ -1,4 +1,5 @@
 const { https } = require('firebase-functions');
+const crypto = require('crypto');
 
 const repository = require('./src/repositories/featureFlagsRepository');
 const stringHelper = require('./src/helpers/stringHelper');
@@ -43,13 +44,12 @@ exports.createFeatureEntry = https.onRequest(async (request, response) => {
     return;
   }
 
-  const test = response.status(200);
-
   // Create the flag.
   const result = await repository.createFeatureEntry({
     name: processedName,
     isEnabled,
     description,
+    uuid: crypto.randomUUID(),
   });
 
   response

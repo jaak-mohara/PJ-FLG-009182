@@ -15,7 +15,7 @@ exports.capitalise = (input) => {
  * @return {string[]}
  */
 exports.split = (input) => {
-  // Split on capital letters, spaces, underscores, and hyphens.
+  // Split on capital letters, spaces, underscores, hyphens, and numbers.
   const splitByUppercaseAndCharacters = input
     .split(/(?<=[a-z])(?=[A-Z0-9])|(?<=[A-Z0-9])(?=[A-Z][a-z])|[\s_-]/);
 

@@ -1,4 +1,3 @@
-
 const mockTokenClient = jest.fn().mockImplementation(() => ({
   idTokenProvider: {
     fetchIdToken: jest.fn().mockImplementation(() => 'test_token'),
