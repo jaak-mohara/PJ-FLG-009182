@@ -16,7 +16,10 @@ exports.createToken = functions.https
       // Write your code below!
       const { targetAudience } = data;
 
-      if (!(typeof targetAudience === 'string') || targetAudience.length === 0) {
+      if (
+        !(typeof targetAudience === 'string') ||
+        targetAudience.length === 0
+      ) {
         throw new functions.https.HttpsError(
           'invalid-argument',
           'The function must be called with ' +
