@@ -7,9 +7,9 @@ const mockResponse = {
   json: jest.fn().mockImplementation(() => mockResponse),
 };
 
-const { createFeatureEntry } = require('../../index');
+const { createFeatureEntry } = require('../../../index');
 
-jest.mock('../../src/repositories/featureFlagsRepository', () => ({
+jest.mock('../../../src/repositories/featureFlagsRepository', () => ({
   checkIfFlagNameExists: mockCheckIfFlagNameExists,
   createFeatureEntry: mockCreateFeatureEntry,
 }));

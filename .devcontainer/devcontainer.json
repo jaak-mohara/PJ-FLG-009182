@@ -28,7 +28,10 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"GitHub.copilot-chat"
+				"GitHub.copilot-chat",
+				"Orta.vscode-jest",
+				"streetsidesoftware.code-spell-checker",
+				"dbaeumer.vscode-eslint"
 			]
 		}
 	}

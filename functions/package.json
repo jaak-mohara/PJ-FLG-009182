@@ -27,7 +27,11 @@
   },
   "jest": {
     "verbose": true,
-    "rootDir": "./src/tests"
+    "rootDir": ".",
+    "moduleNameMapper": {
+      "^@src(.*)$": "<rootDir>/src$1",
+      "^@helpers(.*)$": "<rootDir>/src/helpers$1"
+    }
   },
   "prettier": {
     "trailingComma": "es5",

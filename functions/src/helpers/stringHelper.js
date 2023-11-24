@@ -17,16 +17,12 @@ exports.capitalise = (input) => {
 exports.split = (input) => {
   // Split on capital letters, spaces, underscores, and hyphens.
   const splitByUppercaseAndCharacters = input
-    .split(/(?=[A-Z])|[\s_-]/);
-
-  // Split on numbers.
-  const splitByNumbers = splitByUppercaseAndCharacters
-    .map((word) => word.split(/(\d+)/))
-    .flat();
+    .split(/(?<=[a-z])(?=[A-Z0-9])|(?<=[A-Z0-9])(?=[A-Z][a-z])|[\s_-]/);
 
   // Remove empty strings.
-  const emptyStringsFilteredOut = splitByNumbers
+  const emptyStringsFilteredOut = splitByUppercaseAndCharacters
     .filter((word) => word && word !== '') || [];
+
   return emptyStringsFilteredOut;
 };
 

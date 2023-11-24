@@ -5,7 +5,7 @@ const mockTokenClient = jest.fn().mockImplementation(() => ({
   },
 }));
 
-const { generateToken } = require('../../create_token');
+const { generateToken } = require('../../../create_token');
 
 jest.mock('google-auth-library', () => ({
   GoogleAuth: jest.fn().mockImplementation(() => ({
